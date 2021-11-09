@@ -22,14 +22,23 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout branch
+        uses: actions/checkout@v2
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: setup-msbuild
         uses: microsoft/setup-msbuild@v1
-        
-       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout branch
-        uses: actions/checkout@v2
+      # Step 2.2: run MSBuild
+      - name: Run MSBuild
+        working-directory: $
+        run: msbuild.exe .\FTP\FTP.sln
+     # Step 3.1: locate vstest.console.exe and add to PATH
+      - name: Setup VSTest path
+        uses: darenm/Setup-VSTest@v1
+      
+      - name: Run VSTest
+        id: run_vstest
+        working-directory: $\x64\Debug\
+        run: vstest.console.exe /Platform:x64 .\UnitTest1.dll
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run:  '& "$(vswhere -property installationPath)\Common7\IDE\MSTest.exe" /testcontainer:"D:\a\testVS2019UnitTestsAndActions\testVS2019UnitTestsAndActions\FTP\Debug\UnitTest1.dll"'
+     
