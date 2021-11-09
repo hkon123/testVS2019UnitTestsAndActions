@@ -30,7 +30,6 @@ jobs:
         uses: microsoft/setup-msbuild@v1
       # Step 2.2: run MSBuild
       - name: Run MSBuild
-        working-directory: $
         run: 'dir'
         #run: msbuild .\FTP.sln
      # Step 3.1: locate vstest.console.exe and add to PATH
