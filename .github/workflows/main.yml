@@ -32,4 +32,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run:  '& "$(vswhere -property installationPath)\Common7\IDE\MSTest.exe" /testcontainer:\FTP\Debug\UnitTest1.dll'
+        run:  '& "$(vswhere -property installationPath)\Common7\IDE\MSTest.exe" /testcontainer:"D:\a\testVS2019UnitTestsAndActions\testVS2019UnitTestsAndActions\FTP\Debug\UnitTest1.dll"'
